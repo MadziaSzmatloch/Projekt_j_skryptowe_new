@@ -2,12 +2,11 @@
 :begin
 chcp 65001 > nul
 echo ────────────────────────────────────────────────────
+echo                       MENU
+echo ────────────────────────────────────────────────────
 echo 1.          INFORMACJE O PROJEKCIE
-echo ────────────────────────────────────────────────────
 echo 2.              URUCHOM PROGRAM
-echo ────────────────────────────────────────────────────
 echo 3.               STWÓRZ BACKUP 
-echo ────────────────────────────────────────────────────
 echo 4.                  ZAMKNIJ         
 echo ────────────────────────────────────────────────────
 
@@ -24,7 +23,6 @@ echo ─────────────────────────
 echo                   INFORMACJE O PROJEKCIE                       
 echo ──────────────────────────────────────────────────────────
 echo            Autor projektu: Magdalena Szmatłoch             
-echo ──────────────────────────────────────────────────────────
 echo        Zadanie 5 - "Bryły Obrotowe", Algorytmion 2015            
 echo           Program oblicza przybliżone pole boczne 
 echo             bryły obrotowej metodą trapezową  
@@ -36,10 +34,10 @@ goto begin
 :option2
 cls
 echo ──────────────────────────────────────────────────────
-echo                 Uruchamiam skrypt python                     
-echo ──────────────────────────────────────────────────────
+echo                 Uruchamiam skrypt python                  
 python raport.py
-echo ──────────────────────────────────────────────────────
+python timesaving.py
+python runwebsite.py
 echo                   Raport wygenerowany                    
 echo ──────────────────────────────────────────────────────
 pause
@@ -49,10 +47,13 @@ goto begin
 :option3
 cls
 echo ──────────────────────────────────────────────────────
-echo             Tworzę kopię zapasową raportu                        
-echo ──────────────────────────────────────────────────────
-echo ...
-echo ──────────────────────────────────────────────────────
+echo             Tworzę kopię zapasową raportu               
+FOR /F %%i IN (time.txt) DO set time=%%i
+mkdir kopie_zapasowe\%time%
+xcopy raport.html kopie_zapasowe\%time%
+ren kopie_zapasowe\%time%\raport.html %time%.html
+xcopy Plot.png kopie_zapasowe\%time%
+xcopy style.css kopie_zapasowe\%time%
 echo                Kopia zapasowa wykonana                   
 echo ──────────────────────────────────────────────────────
 pause

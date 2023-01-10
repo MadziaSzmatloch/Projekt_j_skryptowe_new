@@ -1,0 +1,21 @@
+body{
+    font-family: Arial;
+    background-color: rgb(203, 223, 240);
+}
+
+h1{
+    background-color: rgb(185, 215, 241);
+}
+h2{
+    font-size: 30px;
+}
+
+table{
+    font-size: 20px;
+}
+table, th, td{
+    border: 1px solid black;
+}
+
+
+
